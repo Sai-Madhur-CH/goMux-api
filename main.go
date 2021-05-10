@@ -11,5 +11,5 @@ func main() {
 	log.Println("Entered Main")
 	utils.Init()
 	r := routers.NewRouter()
-	log.Fatal(http.ListenAndServe(":5000", r))
+	log.Fatal("server started on port : 5000", http.ListenAndServe(":5000", r))
 }
