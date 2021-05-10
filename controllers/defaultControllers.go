@@ -13,9 +13,9 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-func Authenticate(next http.Handler) http.Handler {
+func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		token := w.Header().Get("token")
+		token := r.Header.Get("Authorization")
 		if token == "" {
 			log.Println("Please provide the token")
 			UnAuthorisedStatus(w, r)
